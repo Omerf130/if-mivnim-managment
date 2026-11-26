@@ -10,6 +10,12 @@ html {
   scroll-padding-block-start: calc(tokens.$header-height + 1px);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   min-block-size: 100dvh;

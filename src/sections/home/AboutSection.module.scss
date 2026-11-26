@@ -1,15 +1,32 @@
 @use "../../styles/tokens" as tokens;
 
+$guide: rgba(tokens.$color-primary, 0.12);
+
 .section {
-  background-color: tokens.$color-background;
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, tokens.$color-white 12%, tokens.$color-background 82%);
   padding-block: clamp(3.5rem, 8vw, 7.5rem);
   padding-inline: tokens.$space-lg;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, $guide 1px, transparent 1px),
+      linear-gradient(to bottom, $guide 1px, transparent 1px);
+    background-size: 2.75rem 2.75rem;
+    mask-image: radial-gradient(ellipse at 83% 27%, #000 0%, transparent 65%);
+    pointer-events: none;
+    content: "";
+  }
 }
 
 .layout {
   display: grid;
   align-items: center;
-  gap: tokens.$space-xl;
+  gap: clamp(2.25rem, 6vw, 6.5rem);
   max-inline-size: tokens.$container-wide;
   margin-inline: auto;
 }
@@ -17,16 +34,15 @@
 .figure {
   position: relative;
   isolation: isolate;
-  padding-inline-end: tokens.$space-md;
-  padding-block-end: tokens.$space-md;
+  padding-inline-end: 0.75rem;
+  padding-block-end: 0.75rem;
 
   &::before {
     position: absolute;
     z-index: -1;
-    inset-block: tokens.$space-md 0;
-    inset-inline: tokens.$space-md 0;
-    background-color: tokens.$color-primary;
-    clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+    inset-block: 0.75rem 0;
+    inset-inline: 0.75rem 0;
+    border: 1px solid rgba(tokens.$color-primary, 0.42);
     content: "";
   }
 }
@@ -35,12 +51,23 @@
   position: relative;
   aspect-ratio: 5 / 4;
   background-color: tokens.$color-navy;
-  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .image {
   object-fit: cover;
   object-position: 34% center;
+}
+
+.imageCorner {
+  position: absolute;
+  inset-block-start: -0.625rem;
+  inset-inline-start: -0.5rem;
+  inline-size: 1.375rem;
+  block-size: 1.375rem;
+  border-block-start: 1px solid tokens.$color-primary;
+  border-inline-start: 1px solid tokens.$color-primary;
+  pointer-events: none;
 }
 
 .content {
@@ -57,8 +84,8 @@
   font-weight: tokens.$font-weight-bold;
 
   &::before {
-    inline-size: tokens.$space-lg;
-    block-size: 2px;
+    inline-size: 2rem;
+    block-size: 1px;
     background-color: currentColor;
     content: "";
   }
@@ -66,9 +93,9 @@
 
 .title {
   margin-block-start: tokens.$space-md;
-  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  font-size: clamp(2.125rem, 5.4vw, 4.625rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.02;
 
   span {
     display: block;
@@ -80,38 +107,78 @@
   display: grid;
   gap: tokens.$space-md;
   margin-block-start: tokens.$space-lg;
-  max-inline-size: 42ch;
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  max-inline-size: 44ch;
+  font-size: clamp(1rem, 1.27vw, 1.125rem);
   line-height: 1.7;
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: tokens.$space-sm clamp(0.75rem, 2vw, 1.5rem);
+  margin-block: tokens.$space-lg 0;
+  padding: tokens.$space-md 0;
+  border-block: 1px solid $guide;
+  list-style: none;
+  font-weight: tokens.$font-weight-bold;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: tokens.$space-xs;
+
+    &::before {
+      inline-size: 0.25rem;
+      block-size: 0.25rem;
+      background: tokens.$color-primary;
+      content: "";
+    }
+  }
 }
 
 .cta {
   display: inline-flex;
   align-items: center;
-  min-block-size: 2.75rem;
+  gap: tokens.$space-lg;
+  min-block-size: 3rem;
   margin-block-start: tokens.$space-lg;
-  padding-inline-end: tokens.$space-md;
-  color: tokens.$color-primary;
+  padding-inline: tokens.$space-md;
+  background-color: tokens.$color-navy;
+  border-radius: tokens.$radius-sm;
+  color: tokens.$color-white;
   font-weight: tokens.$font-weight-bold;
   text-decoration: none;
 
-  span {
-    border-block-end: 1px solid currentColor;
-    padding-block-end: tokens.$space-xs;
-  }
-
   &:hover {
-    color: tokens.$color-navy;
+    background-color: tokens.$color-primary;
+  }
+}
+
+.ctaArrow {
+  position: relative;
+  inline-size: 1rem;
+  block-size: 1px;
+  background: tokens.$color-light-blue;
+
+  &::after {
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: 0.4375rem;
+    block-size: 0.4375rem;
+    transform: translateY(-45%) rotate(45deg);
+    border-block-end: 1px solid tokens.$color-light-blue;
+    border-inline-end: 1px solid tokens.$color-light-blue;
+    content: "";
   }
 }
 
 @media (min-width: tokens.$breakpoint-md) {
   .layout {
-    grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   }
 
   .figure {
+    margin-block-start: tokens.$space-lg;
     padding-inline-end: tokens.$space-lg;
     padding-block-end: tokens.$space-lg;
 
@@ -123,5 +190,39 @@
 
   .imageFrame {
     aspect-ratio: 6 / 5;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cta {
+    transition: background-color tokens.$transition-fast;
+
+    &:is(:hover, :focus-visible) .ctaArrow {
+      transform: translateX(-0.1875rem);
+    }
+  }
+
+  .ctaArrow {
+    transition: transform tokens.$transition-fast;
+  }
+
+  @supports (animation-timeline: view()) {
+    .figure {
+      animation: appear linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0.72;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

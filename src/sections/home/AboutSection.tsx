@@ -14,10 +14,11 @@ export default function AboutSection() {
               src={aboutImage}
               alt="הדמיה של בניין מגורים מודרני בשעת בין ערביים"
               fill
-              sizes="(min-width: 80rem) 38rem, (min-width: 48rem) 52vw, calc(100vw - 3rem)"
+              sizes="(min-width: 80rem) 38rem, (min-width: 48rem) 50vw, calc(100vw - 3.75rem)"
               className={styles.image}
             />
           </div>
+          <span className={styles.imageCorner} aria-hidden="true" />
         </figure>
 
         <div className={styles.content}>
@@ -36,8 +37,15 @@ export default function AboutSection() {
             </p>
           </div>
 
+          <ul className={styles.values} aria-label="הערכים שלנו">
+            <li>מקצועיות</li>
+            <li>שקיפות</li>
+            <li>שירות אישי</li>
+          </ul>
+
           <a className={styles.cta} href="#about-details">
-            <span>הכירו אותנו</span>
+            הכירו אותנו
+            <span className={styles.ctaArrow} aria-hidden="true" />
           </a>
         </div>
       </div>
