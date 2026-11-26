@@ -1,0 +1,231 @@
+@use "../../styles/tokens" as tokens;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-block-size: clamp(34rem, calc(100svh - #{tokens.$header-height} - 1px), 62rem);
+  color: tokens.$color-white;
+  background-color: tokens.$color-navy;
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(tokens.$color-navy, 0.99) 0%,
+      rgba(tokens.$color-navy, 0.93) 24%,
+      rgba(tokens.$color-navy, 0.84) 51%,
+      rgba(tokens.$color-navy, 0.36) 74%,
+      rgba(tokens.$color-navy, 0.12) 100%
+    );
+    content: "";
+  }
+}
+
+.poster,
+.video {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: 38% center;
+  pointer-events: none;
+}
+
+.video {
+  opacity: 0;
+
+  &[data-visible="true"] {
+    opacity: 1;
+  }
+}
+
+.frame {
+  position: relative;
+  display: grid;
+  align-items: end;
+  inline-size: min(100% - #{tokens.$space-2xl}, tokens.$container-wide);
+  margin-block: tokens.$space-lg;
+  margin-inline: auto;
+  padding-block: clamp(8rem, 32svh, 22rem) tokens.$space-2xl;
+  border-block: 1px solid rgba(tokens.$color-white, 0.24);
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset-inline-end: 0;
+    inline-size: tokens.$space-lg;
+    block-size: tokens.$space-lg;
+    border-inline-end: 1px solid rgba(tokens.$color-white, 0.48);
+    pointer-events: none;
+    content: "";
+  }
+
+  &::before {
+    inset-block-start: -1px;
+    border-block-start: 1px solid rgba(tokens.$color-white, 0.48);
+  }
+
+  &::after {
+    inset-block-end: -1px;
+    border-block-end: 1px solid rgba(tokens.$color-white, 0.48);
+  }
+}
+
+.content {
+  max-inline-size: tokens.$container-content;
+}
+
+.accent {
+  inline-size: 2.75rem;
+  block-size: 0.1875rem;
+  margin-block-end: tokens.$space-lg;
+  background-color: tokens.$color-light-blue;
+}
+
+.title {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.02;
+
+  span {
+    display: block;
+    color: tokens.$color-light-blue;
+  }
+}
+
+.description {
+  margin-block-start: tokens.$space-lg;
+  color: tokens.$color-background;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: tokens.$line-height-body;
+
+  span {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: tokens.$space-sm;
+  margin-block-start: tokens.$space-xl;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 3.25rem;
+  padding: tokens.$space-sm tokens.$space-md;
+  border: 1px solid transparent;
+  border-radius: tokens.$radius-sm;
+  font-weight: tokens.$font-weight-bold;
+  text-align: center;
+  text-decoration: none;
+  transition: color tokens.$transition-fast, background-color tokens.$transition-fast;
+}
+
+.primary {
+  color: tokens.$color-navy;
+  background-color: tokens.$color-light-blue;
+
+  &:hover {
+    background-color: tokens.$color-white;
+  }
+}
+
+.secondary,
+.playback {
+  color: tokens.$color-white;
+  background-color: rgba(tokens.$color-navy, 0.55);
+  border-color: rgba(tokens.$color-white, 0.56);
+
+  &:hover {
+    background-color: tokens.$color-navy;
+  }
+}
+
+.hero :focus-visible {
+  outline-color: tokens.$color-white;
+}
+
+.playback {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: calc(#{tokens.$space-lg} + 0.625rem);
+  inset-inline-end: max(calc(#{tokens.$space-lg} + 0.625rem), calc((100% - #{tokens.$container-wide}) / 2 + 0.625rem));
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: tokens.$radius-sm;
+  cursor: pointer;
+
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+}
+
+.playIcon {
+  inline-size: 0;
+  block-size: 0;
+  border-block: 0.375rem solid transparent;
+  border-left: 0.625rem solid currentColor;
+}
+
+.pauseIcon {
+  inline-size: 0.6875rem;
+  block-size: 0.75rem;
+  border-inline: 0.1875rem solid currentColor;
+}
+
+@media (min-width: tokens.$breakpoint-md) {
+  .hero::after {
+    background: linear-gradient(
+      270deg,
+      rgba(tokens.$color-navy, 0.99) 0%,
+      rgba(tokens.$color-navy, 0.91) 25%,
+      rgba(tokens.$color-navy, 0.78) 41%,
+      rgba(tokens.$color-navy, 0.31) 66%,
+      rgba(tokens.$color-navy, 0.14) 100%
+    );
+  }
+
+  .frame {
+    align-items: center;
+    margin-block: tokens.$space-xl;
+    padding-block: tokens.$space-2xl;
+  }
+
+  .title {
+    font-size: clamp(3.75rem, 6.8vw, 7rem);
+  }
+
+  .actions {
+    gap: tokens.$space-md;
+  }
+
+  .primary,
+  .secondary {
+    min-inline-size: 9rem;
+  }
+
+  .playback {
+    inset-block: auto calc(#{tokens.$space-xl} + 0.625rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .secondary {
+    transition: none;
+  }
+}

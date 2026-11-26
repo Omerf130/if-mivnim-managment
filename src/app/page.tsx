@@ -1,9 +1,9 @@
-import HomeIntro from "@/sections/home/HomeIntro";
+import Hero from "@/sections/home/Hero";
 
 export default function HomePage() {
   return (
     <main id="home" tabIndex={-1}>
-      <HomeIntro />
+      <Hero />
       <div id="about" tabIndex={-1} />
       <div id="services" tabIndex={-1} />
       <div id="projects" tabIndex={-1} />
