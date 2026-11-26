@@ -1,0 +1,46 @@
+// Colors
+$color-navy: #101f36;
+$color-primary: #2457d6;
+$color-light-blue: #59bdeb;
+$color-background: #f0f4f8;
+$color-white: #ffffff;
+
+// Typography
+$font-primary: "Heebo Variable", Arial, sans-serif;
+$font-size-body: 1rem;
+$font-size-lead: 1.25rem;
+$font-size-title: clamp(2rem, 1.5rem + 2vw, 3rem);
+$font-weight-bold: 700;
+$line-height-body: 1.6;
+$line-height-title: 1.2;
+
+// Spacing
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+
+// Breakpoints
+$breakpoint-sm: 36rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 64rem;
+$breakpoint-xl: 80rem;
+
+// Border radii
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba($color-navy, 0.1);
+$shadow-md: 0 8px 24px rgba($color-navy, 0.14);
+
+// Transitions
+$transition-fast: 150ms ease-out;
+$transition-standard: 250ms ease-out;
+
+// Container widths
+$container-content: 48rem;
+$container-wide: 75rem;

@@ -1,0 +1,45 @@
+@use "tokens" as tokens;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvh;
+  background-color: tokens.$color-background;
+  color: tokens.$color-navy;
+  font-family: tokens.$font-primary;
+  font-size: tokens.$font-size-body;
+  line-height: tokens.$line-height-body;
+  text-align: start;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, figure) {
+  margin: 0;
+}
+
+:where(img, picture, video, canvas, svg) {
+  display: block;
+  max-inline-size: 100%;
+}
+
+:where(img, video) {
+  block-size: auto;
+}
+
+:where(button, input, select, textarea) {
+  font: inherit;
+}
+
+a {
+  color: tokens.$color-primary;
+  text-underline-offset: 0.15em;
+}
+
+:focus-visible {
+  outline: 2px solid tokens.$color-primary;
+  outline-offset: 3px;
+}
