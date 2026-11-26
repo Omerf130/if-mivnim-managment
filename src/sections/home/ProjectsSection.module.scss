@@ -396,10 +396,16 @@ $ink-line: rgba(tokens.$color-navy, 0.24);
 }
 
 @media (min-width: tokens.$breakpoint-lg) {
+  .section {
+    padding-block: clamp(2.5rem, 3.5vw, 4rem);
+  }
+
   .layout {
+    inline-size: 88%;
+    max-inline-size: 73rem;
     grid-template-columns: minmax(0, 3.25fr) minmax(0, 1fr);
     grid-template-rows: 1fr auto;
-    column-gap: clamp(1.25rem, 3vw, 2.75rem);
+    column-gap: clamp(1.25rem, 2.65vw, 2.5rem);
     row-gap: tokens.$space-sm;
     direction: ltr;
   }
@@ -422,7 +428,7 @@ $ink-line: rgba(tokens.$color-navy, 0.24);
   .gallery {
     grid-column: 1;
     grid-row: 1 / 3;
-    margin-block-start: tokens.$space-lg;
+    margin-block-start: tokens.$space-md;
   }
 
   .cta {
@@ -433,7 +439,7 @@ $ink-line: rgba(tokens.$color-navy, 0.24);
   }
 
   .title {
-    font-size: clamp(1.875rem, 3vw, 3rem);
+    font-size: clamp(1.6875rem, 2.7vw, 2.7rem);
   }
 }
 
