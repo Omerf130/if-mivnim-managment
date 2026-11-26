@@ -1,0 +1,379 @@
+@use "../../styles/tokens" as tokens;
+
+$edge: rgba(tokens.$color-light-blue, 0.46);
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding: clamp(4rem, 7vw, 7rem) tokens.$space-lg clamp(3.5rem, 6vw, 6rem);
+  color: tokens.$color-white;
+  background: tokens.$color-navy;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(tokens.$color-navy, 0.04), rgba(tokens.$color-navy, 0.22) 56%, rgba(tokens.$color-navy, 0.86)),
+      linear-gradient(270deg, rgba(tokens.$color-navy, 0.98) 8%, rgba(tokens.$color-navy, 0.94) 30%, rgba(tokens.$color-navy, 0.72) 57%, rgba(tokens.$color-navy, 0.13) 100%);
+    content: "";
+  }
+
+  :focus-visible {
+    outline-color: tokens.$color-light-blue;
+  }
+}
+
+.backdrop {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 18% center;
+}
+
+.layout {
+  position: relative;
+  max-inline-size: 85rem;
+  margin-inline: auto;
+
+  &::before {
+    position: absolute;
+    inset-block: calc(-1 * #{tokens.$space-lg}) calc(-1 * #{tokens.$space-lg});
+    inset-inline: -0.5rem;
+    border-block-end: 1px solid $edge;
+    border-inline-start: 1px solid rgba(tokens.$color-light-blue, 0.26);
+    pointer-events: none;
+    content: "";
+  }
+}
+
+.blueprint {
+  position: absolute;
+  z-index: -1;
+  inset-block-start: calc(-1 * #{tokens.$space-md});
+  inset-inline-end: 23%;
+  inline-size: min(47%, 36rem);
+  block-size: auto;
+  color: rgba(tokens.$color-light-blue, 0.24);
+  stroke: currentColor;
+  stroke-width: 0.85;
+  pointer-events: none;
+}
+
+.intro {
+  position: relative;
+  max-inline-size: 51rem;
+  padding-inline-start: clamp(0.5rem, 3vw, 2.75rem);
+
+  &::before {
+    position: absolute;
+    inset-block-start: calc(-1 * #{tokens.$space-lg});
+    inset-inline-start: -0.5rem;
+    inline-size: 3.5rem;
+    block-size: 1px;
+    background: tokens.$color-light-blue;
+    content: "";
+  }
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: tokens.$space-sm;
+  margin-block-end: tokens.$space-md;
+  color: tokens.$color-light-blue;
+  font-weight: tokens.$font-weight-bold;
+
+  &::before {
+    inline-size: 1.75rem;
+    block-size: 1px;
+    background-color: currentColor;
+    content: "";
+  }
+}
+
+.title {
+  font-size: clamp(2.25rem, 4.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.04;
+  text-wrap: balance;
+
+  span {
+    display: block;
+    color: tokens.$color-light-blue;
+  }
+}
+
+.lead {
+  max-inline-size: 39ch;
+  margin-block-start: tokens.$space-md;
+  color: tokens.$color-background;
+  font-size: clamp(1rem, 1.65vw, tokens.$font-size-lead);
+}
+
+.services {
+  --slant: 1rem;
+  --panel-shape: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+  display: grid;
+  gap: 2px;
+  margin: clamp(2.5rem, 5vw, 4.25rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  clip-path: var(--panel-shape);
+  min-block-size: 18rem;
+  margin-block-end: calc(-1 * var(--slant));
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(135deg, $edge, rgba(tokens.$color-white, 0.56) 29%, rgba(tokens.$color-primary, 0.2) 74%, $edge);
+    background-color: transparent;
+    content: "";
+  }
+}
+
+.surface {
+  position: absolute;
+  z-index: -1;
+  inset: 1px 0;
+  overflow: hidden;
+  background: tokens.$color-navy;
+  clip-path: var(--panel-shape);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, rgba(tokens.$color-navy, 0.99) 3%, rgba(tokens.$color-navy, 0.95) 21%, rgba(tokens.$color-navy, 0.75) 42%, transparent 82%),
+      linear-gradient(270deg, rgba(tokens.$color-navy, 0.55), transparent 78%);
+    content: "";
+  }
+}
+
+.serviceImage {
+  object-fit: cover;
+  object-position: center 44%;
+  filter: brightness(0.87) saturate(0.92);
+}
+
+.copy {
+  position: relative;
+  padding: 4.5rem tokens.$space-lg calc(var(--slant) + #{tokens.$space-lg});
+
+  &::before {
+    display: block;
+    inline-size: 1.6rem;
+    block-size: 2px;
+    margin-block-end: tokens.$space-sm;
+    background: tokens.$color-light-blue;
+    content: "";
+  }
+
+  h3 {
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+    line-height: tokens.$line-height-title;
+  }
+
+  p {
+    max-inline-size: 27ch;
+    margin-block-start: tokens.$space-xs;
+    color: tokens.$color-background;
+    line-height: 1.5;
+  }
+}
+
+.previewButton,
+.closeButton {
+  display: inline-grid;
+  min-block-size: 2.75rem;
+  min-inline-size: 2.75rem;
+  place-items: center;
+  padding: 0;
+  color: tokens.$color-white;
+  background: rgba(tokens.$color-navy, 0.9);
+  border: 1px solid $edge;
+  cursor: pointer;
+
+  &:is(:hover, :focus-visible) {
+    color: tokens.$color-light-blue;
+    border-color: tokens.$color-light-blue;
+  }
+}
+
+.previewButton {
+  position: absolute;
+  inset-block-start: calc(var(--slant) + 0.25rem);
+  inset-inline-start: 0.75rem;
+
+  svg {
+    inline-size: 1.15rem;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.service:is(:hover, :focus-within) {
+  &::before {
+    background-color: tokens.$color-light-blue;
+  }
+
+  .serviceImage {
+    filter: brightness(1.04) saturate(1);
+    transform: scale(1.045);
+  }
+
+  .copy {
+    color: tokens.$color-light-blue;
+
+    &::before {
+      inline-size: 2.5rem;
+    }
+  }
+}
+
+.dialog {
+  inline-size: min(calc(100% - 2rem), 48rem);
+  max-block-size: calc(100% - 2rem);
+  padding: tokens.$space-md;
+  color: tokens.$color-white;
+  background: tokens.$color-navy;
+  border: 1px solid $edge;
+
+  &::backdrop {
+    background: rgba(tokens.$color-navy, 0.88);
+  }
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: tokens.$space-md;
+  margin-block-end: tokens.$space-md;
+}
+
+.closeButton {
+  padding-inline: tokens.$space-sm;
+}
+
+.dialogImage {
+  position: relative;
+  aspect-ratio: 3 / 2;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+@media (width < tokens.$breakpoint-md) {
+  .section::before {
+    background:
+      linear-gradient(180deg, rgba(tokens.$color-navy, 0.45), tokens.$color-navy 39rem),
+      linear-gradient(270deg, rgba(tokens.$color-navy, 0.93), rgba(tokens.$color-navy, 0.48));
+  }
+
+  .backdrop {
+    max-block-size: 41rem;
+    object-position: 24% top;
+  }
+
+  .blueprint {
+    inset-inline-end: 1%;
+    inline-size: 75%;
+  }
+}
+
+@media (min-width: tokens.$breakpoint-sm) {
+  .services {
+    --slant: clamp(2rem, 5.5vw, 5.5rem);
+    --panel-shape: polygon(var(--slant) 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    padding-inline-end: var(--slant);
+  }
+
+  .service {
+    min-block-size: 20rem;
+    margin-block-end: 0;
+    margin-inline-end: calc(-1 * var(--slant));
+  }
+
+  .surface {
+    inset: 1px;
+  }
+
+  .copy {
+    padding: 5rem calc(var(--slant) + 1rem) tokens.$space-xl tokens.$space-lg;
+  }
+
+  .previewButton {
+    inset-block-start: 0.875rem;
+    inset-inline-start: 1.15rem;
+  }
+}
+
+@media (min-width: tokens.$breakpoint-lg) {
+  .section {
+    padding-inline: clamp(2rem, 4vw, 4rem);
+  }
+
+  .services {
+    --slant: clamp(4.5rem, 7.7vw, 7.25rem);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .service {
+    min-block-size: clamp(21rem, 27vw, 26rem);
+  }
+
+  .copy {
+    padding-inline-end: 1rem;
+  }
+
+  .previewButton {
+    inset-inline-start: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .service::before {
+    transition: background-color tokens.$transition-standard;
+  }
+
+  .copy {
+    transition: color tokens.$transition-standard;
+
+    &::before {
+      transition: inline-size tokens.$transition-standard;
+    }
+  }
+
+  .serviceImage {
+    transition: transform 450ms ease-out, filter tokens.$transition-standard;
+  }
+
+  .previewButton,
+  .closeButton {
+    transition: color tokens.$transition-fast, border-color tokens.$transition-fast;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service:is(:hover, :focus-within) .serviceImage {
+    transform: none;
+  }
+}

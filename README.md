@@ -36,8 +36,8 @@ The root layout sets Hebrew and RTL for the entire document. Heebo is bundled th
 ## Header navigation
 
 The homepage link targets `/#home`, and `/#about` opens the homepage About
-section. `/#services`, `/#projects`, and `/#contact` still point to
-temporary homepage anchors.
+section. `/#services` opens the homepage Services section. `/#projects` and
+`/#contact` still point to temporary homepage anchors.
 
 The About section uses provisional marketing copy and the existing generated
 `residential-exterior.webp` illustration of a fictional building. The
@@ -61,3 +61,9 @@ poster for other uses of the Hero component.
 Playback is muted, inline, and looping. Autoplay waits until page load and
 is skipped when the browser reports reduced motion or data saving. The
 pause/play button lets visitors control playback.
+
+## Homepage Services media
+
+The service list and copy are provisional. The five WebP files in
+`public/media/services/` are original AI-generated architectural illustrations.
+They show example settings and do not depict properties managed by the company.

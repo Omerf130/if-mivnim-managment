@@ -1,5 +1,6 @@
 import AboutSection from "@/sections/home/AboutSection";
 import Hero from "@/sections/home/Hero";
+import ServicesSection from "@/sections/home/ServicesSection";
 
 export default function HomePage() {
   return (
@@ -9,7 +10,7 @@ export default function HomePage() {
         videoSrc="/media/hero-building.mp4"
       />
       <AboutSection />
-      <div id="services" tabIndex={-1} />
+      <ServicesSection />
       <div id="projects" tabIndex={-1} />
       <div id="contact" tabIndex={-1} />
     </main>
