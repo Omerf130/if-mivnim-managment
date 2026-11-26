@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import "@fontsource-variable/heebo";
 import "@/styles/globals.scss";
+import Header from "@/components/layout/Header";
 
 export const metadata: Metadata = {
   title: "פ.ע ניהול ואחזקות",
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="he" dir="rtl">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

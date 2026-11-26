@@ -32,3 +32,10 @@ npm run build
 - `public/` is for static assets.
 
 The root layout sets Hebrew and RTL for the entire document. Heebo is bundled through Fontsource, and styles use logical properties to follow the document direction. Import application code with the `@/` alias, which resolves to `src/`.
+
+## Header navigation
+
+The homepage link targets `/#home`. The `/#about`, `/#services`,
+`/#projects`, and `/#contact` links point to temporary anchors on the
+homepage. The corresponding sections have yet to be implemented. Both
+contact links use `/#contact`.
