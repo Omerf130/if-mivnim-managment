@@ -115,7 +115,7 @@ $edge: rgba(tokens.$color-light-blue, 0.46);
   --slant: 1rem;
   --panel-shape: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
   display: grid;
-  gap: 2px;
+  gap: 10px;
   margin: clamp(2.5rem, 5vw, 4.25rem) 0 0;
   padding: 0;
   list-style: none;
@@ -216,9 +216,10 @@ $edge: rgba(tokens.$color-light-blue, 0.46);
   position: absolute;
   inset-block-start: calc(var(--slant) + 0.25rem);
   inset-inline-start: 0.75rem;
+  background-color: rgba(tokens.$color-navy, 0.78);
 
   svg {
-    inline-size: 1.15rem;
+    inline-size: 1rem;
     stroke: currentColor;
     stroke-width: 1.35;
     stroke-linecap: round;
@@ -299,15 +300,14 @@ $edge: rgba(tokens.$color-light-blue, 0.46);
 
 @media (min-width: tokens.$breakpoint-sm) {
   .services {
-    --slant: clamp(2rem, 5.5vw, 5.5rem);
+    --slant: clamp(2rem, 5.3vw, 5.25rem);
     --panel-shape: polygon(var(--slant) 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3px;
     padding-inline-end: var(--slant);
   }
 
   .service {
-    min-block-size: 20rem;
+    min-block-size: 19.25rem;
     margin-block-end: 0;
     margin-inline-end: calc(-1 * var(--slant));
   }
@@ -328,24 +328,38 @@ $edge: rgba(tokens.$color-light-blue, 0.46);
 
 @media (min-width: tokens.$breakpoint-lg) {
   .section {
+    padding-block: clamp(3.5rem, 5.2vw, 5.125rem) clamp(3rem, 4.4vw, 4.5rem);
     padding-inline: clamp(2rem, 4vw, 4rem);
   }
 
+  .title {
+    font-size: clamp(2.25rem, 3.57vw, 3.825rem);
+  }
+
   .services {
-    --slant: clamp(4.5rem, 7.7vw, 7.25rem);
+    --slant: clamp(3.625rem, 6.16vw, 5.8rem);
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-block-start: clamp(1.875rem, 2.8vw, 2.75rem);
+    margin-inline: clamp(0.5rem, 1vw, 1rem);
   }
 
   .service {
-    min-block-size: clamp(21rem, 27vw, 26rem);
+    min-block-size: clamp(16.8rem, 21.6vw, 20.8rem);
   }
 
   .copy {
-    padding-inline-end: 1rem;
+    padding: 4rem calc(var(--slant) + 0.875rem) tokens.$space-lg tokens.$space-lg;
   }
 
   .previewButton {
     inset-inline-start: 1.5rem;
+  }
+}
+
+@media (min-width: tokens.$breakpoint-lg) and (hover: hover) and (pointer: fine) {
+  .previewButton {
+    min-block-size: 2.375rem;
+    min-inline-size: 2.375rem;
   }
 }
 
