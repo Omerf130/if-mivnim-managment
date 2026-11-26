@@ -37,7 +37,7 @@ The root layout sets Hebrew and RTL for the entire document. Heebo is bundled th
 
 The homepage link targets `/#home`, and `/#about` opens the homepage About
 section. `/#services` opens the homepage Services section. `/#projects` opens the homepage Projects section.
-`/#contact` still points to a temporary homepage anchor.
+`/#contact` opens the homepage Contact section.
 
 The About section uses provisional marketing copy and the existing generated
 `residential-exterior.webp` illustration of a fictional building. The
@@ -81,3 +81,15 @@ Projects page exists. The gallery does not rotate automatically.
 The advantages copy is provisional. The architectural model in
 `public/media/advantages/residential-model.webp` is an original AI-generated
 illustration of a fictional building.
+
+## Homepage contact and footer
+
+The contact copy is provisional. The sunset background in
+`public/media/contact/residential-sunset.webp` is an original AI-generated
+illustration of a fictional building.
+
+The form is a local validation prototype. It checks input in the browser and
+does not submit, store, or log the details. Add approved, public company
+contact details in `src/config/companyContact.ts`. The contact area only
+renders fields present in that configuration. Footer links navigate to the
+existing homepage sections.

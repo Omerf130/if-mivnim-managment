@@ -1,0 +1,82 @@
+@use "../../styles/tokens" as tokens;
+
+.footer {
+  color: tokens.$color-background;
+  background: linear-gradient(110deg, #0c1929, tokens.$color-navy);
+  border-block-start: 1px solid rgba(tokens.$color-light-blue, 0.24);
+  padding: tokens.$space-md tokens.$space-lg;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: tokens.$color-light-blue;
+    }
+  }
+
+  :focus-visible {
+    outline-color: tokens.$color-light-blue;
+  }
+}
+
+.layout {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: tokens.$space-xs;
+  max-inline-size: 83rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.brand {
+  color: tokens.$color-white;
+  font-size: 1.125rem;
+  font-weight: tokens.$font-weight-bold;
+
+  &::before {
+    display: inline-block;
+    inline-size: 1px;
+    block-size: 1em;
+    margin-inline-end: tokens.$space-sm;
+    vertical-align: -0.1em;
+    background: tokens.$color-light-blue;
+    content: "";
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: tokens.$space-md;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.875rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+  }
+}
+
+.copyright {
+  color: #c3d1e3;
+  font-size: 0.8125rem;
+}
+
+@media (min-width: tokens.$breakpoint-lg) {
+  .layout {
+    grid-template-columns: 1fr auto 1fr;
+    justify-items: start;
+    gap: tokens.$space-lg;
+  }
+
+  .copyright {
+    justify-self: end;
+    text-align: end;
+  }
+}
