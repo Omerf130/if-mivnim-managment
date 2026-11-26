@@ -1,5 +1,6 @@
 import AboutSection from "@/sections/home/AboutSection";
 import Hero from "@/sections/home/Hero";
+import ProjectsSection from "@/sections/home/ProjectsSection";
 import ServicesSection from "@/sections/home/ServicesSection";
 
 export default function HomePage() {
@@ -11,7 +12,7 @@ export default function HomePage() {
       />
       <AboutSection />
       <ServicesSection />
-      <div id="projects" tabIndex={-1} />
+      <ProjectsSection />
       <div id="contact" tabIndex={-1} />
     </main>
   );

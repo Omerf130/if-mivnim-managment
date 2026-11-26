@@ -36,8 +36,8 @@ The root layout sets Hebrew and RTL for the entire document. Heebo is bundled th
 ## Header navigation
 
 The homepage link targets `/#home`, and `/#about` opens the homepage About
-section. `/#services` opens the homepage Services section. `/#projects` and
-`/#contact` still point to temporary homepage anchors.
+section. `/#services` opens the homepage Services section. `/#projects` opens the homepage Projects section.
+`/#contact` still points to a temporary homepage anchor.
 
 The About section uses provisional marketing copy and the existing generated
 `residential-exterior.webp` illustration of a fictional building. The
@@ -67,3 +67,11 @@ pause/play button lets visitors control playback.
 The service list and copy are provisional. The five WebP files in
 `public/media/services/` are original AI-generated architectural illustrations.
 They show example settings and do not depict properties managed by the company.
+
+## Homepage Projects gallery
+
+The four WebP assets in `public/media/projects/` are original AI-generated
+residential architecture illustrations. The numbered entries and provisional
+copy describe an illustrative gallery and make no claims about company projects.
+“לכל הפרויקטים” links to the on-page `#project-gallery` until a dedicated
+Projects page exists. The gallery does not rotate automatically.
