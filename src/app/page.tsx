@@ -2,7 +2,6 @@ import Footer from "@/components/layout/Footer";
 import AboutSection from "@/sections/home/AboutSection";
 import AdvantagesSection from "@/sections/home/AdvantagesSection";
 import ContactSection from "@/sections/home/ContactSection";
-import HomepageMotion from "@/sections/home/HomepageMotion";
 import Hero from "@/sections/home/Hero";
 import ProjectsSection from "@/sections/home/ProjectsSection";
 import ServicesSection from "@/sections/home/ServicesSection";
@@ -20,7 +19,6 @@ export default function HomePage() {
         <ProjectsSection />
         <AdvantagesSection />
         <ContactSection />
-        <HomepageMotion />
       </main>
       <Footer />
     </>

@@ -42,7 +42,6 @@ export default function ProjectsGallery() {
         id="project-gallery"
         tabIndex={-1}
         className={styles.gallery}
-        data-reveal="gallery"
         role="group"
         aria-label="גלריית פרויקטים להמחשה"
         aria-describedby="project-imagery-note"

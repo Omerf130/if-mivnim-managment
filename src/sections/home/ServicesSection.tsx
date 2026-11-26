@@ -65,7 +65,7 @@ export default function ServicesSection() {
         <ul className={styles.services} role="list">
           {services.map((service) => (
             <li key={service.title} className={styles.service}>
-              <div className={styles.surface} data-reveal="panel">
+              <div className={styles.surface}>
                 <Image
                   src={service.image}
                   alt=""

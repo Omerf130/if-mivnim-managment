@@ -18,7 +18,7 @@ export default function AdvantagesSection() {
       <AdvantagesExperience
         model={(
           <>
-            <div className={styles.model} data-reveal="fade">
+            <div className={styles.model}>
               <Image
                 src="/media/advantages/residential-model.webp"
                 alt="הדמיה אדריכלית של בניין מגורים מואר על גבי בסיס תצוגה עגול"
@@ -39,7 +39,7 @@ export default function AdvantagesSection() {
           </>
         )}
       >
-        <svg className={styles.connectors} data-reveal="fade" viewBox="0 0 1200 460" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <svg className={styles.connectors} viewBox="0 0 1200 460" preserveAspectRatio="none" fill="none" aria-hidden="true">
           {benefits.map(({ title, connector, point: [x, y] }, index) => (
             <g key={title} className={styles.connector} data-benefit={index + 1}>
               <path d={connector} />

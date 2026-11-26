@@ -14,7 +14,7 @@
     inset: 0;
     background:
       linear-gradient(0deg, rgba(#0c1929, 0.94) 0%, rgba(tokens.$color-navy, 0.12) 31%, transparent 76%),
-      linear-gradient(270deg, rgba(#0c1929, 0.98) 3%, rgba(tokens.$color-navy, 0.94) 30%, rgba(tokens.$color-navy, 0.40) 54%, rgba(tokens.$color-navy, 0.08) 77%);
+      linear-gradient(270deg, rgba(#0c1929, 0.98) 3%, rgba(tokens.$color-navy, 0.94) 30%, rgba(tokens.$color-navy, 0.28) 54%, rgba(tokens.$color-navy, 0.08) 77%);
     content: "";
   }
 
@@ -122,11 +122,11 @@
   inline-size: min(100%, 25rem);
   justify-self: center;
   padding: clamp(1rem, 2.3vw, 1.75rem);
-  background: linear-gradient(145deg, rgba(#203a54, 0.60), rgba(#0c1b2e, 0.70));
+  background: linear-gradient(145deg, rgba(#203a54, 0.27), rgba(#0c1b2e, 0.43));
   border: 1px solid rgba(#c7e0ff, 0.33);
   border-radius: tokens.$radius-lg;
   box-shadow: inset 0 1px 0 rgba(#e0eeff, 0.11), 0 12px 34px rgba(#070f1c, 0.25);
-  backdrop-filter: blur(6px) saturate(1.12);
+  backdrop-filter: blur(3.5px) saturate(1.12);
 
   h3 {
     margin-block-end: tokens.$space-md;
@@ -160,7 +160,7 @@
     min-block-size: 2.75rem;
     padding: tokens.$space-xs 0.75rem;
     color: tokens.$color-white;
-    background: rgba(#b4ccee, 0.10);
+    background: rgba(#b4ccee, 0.06);
     border: 1px solid rgba(#bfd9fa, 0.35);
     border-radius: tokens.$radius-md;
 
@@ -219,7 +219,7 @@
 
     &::before {
       background:
-        linear-gradient(180deg, rgba(#0c1929, 0.82), rgba(tokens.$color-navy, 0.50) 11rem, #0c1929 34rem),
+        linear-gradient(180deg, rgba(#0c1929, 0.82), rgba(tokens.$color-navy, 0.44) 11rem, #0c1929 34rem),
         linear-gradient(270deg, rgba(tokens.$color-navy, 0.63), rgba(tokens.$color-navy, 0.2));
     }
   }
