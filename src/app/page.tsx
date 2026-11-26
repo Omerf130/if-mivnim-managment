@@ -3,7 +3,10 @@ import Hero from "@/sections/home/Hero";
 export default function HomePage() {
   return (
     <main id="home" tabIndex={-1}>
-      <Hero />
+      <Hero
+        posterSrc="/media/hero-building-poster.webp"
+        videoSrc="/media/hero-building.mp4"
+      />
       <div id="about" tabIndex={-1} />
       <div id="services" tabIndex={-1} />
       <div id="projects" tabIndex={-1} />

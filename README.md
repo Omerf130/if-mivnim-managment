@@ -42,20 +42,18 @@ contact links use `/#contact`.
 
 ## Homepage hero media
 
-The hero currently uses `public/media/residential-exterior.webp`, a generated
-architectural illustration compressed to WebP (1600 × 900, 191,216 bytes).
-It depicts a fictional building for illustrative use.
+The homepage uses [Modern Residential Building Exteriors at Dawn](https://www.pexels.com/video/modern-residential-building-exteriors-at-dawn-35985882/)
+by umar muazu, supplied via the repository and used under the
+[Pexels License](https://www.pexels.com/license/), which permits commercial
+website use. The clip illustrates the type of architecture the company serves
+and does not depict a property represented as under its management.
 
-Stock footage evaluated for this design was [Modern Residential Building
-Exteriors at Dawn](https://www.pexels.com/video/modern-residential-building-exteriors-at-dawn-35985882/)
-by umar muazu. The [Pexels License](https://www.pexels.com/license/) permits
-commercial website use. The workspace returned HTTP 403 for both the asset
-download and its still, so neither file is included.
+`public/media/hero-building.mp4` is a fast-start H.264 video without audio.
+`public/media/hero-building-poster.webp` is extracted from its opening frame
+and remains visible until playback starts or if playback fails. The original
+`residential-exterior.webp` illustration remains available as the default
+poster for other uses of the Hero component.
 
-To enable video once suitable footage is available, place an optimized,
-audio-free, loop-ready file in `public/media/` and pass its local URL as
-`videoSrc` on `Hero` in `src/app/page.tsx`. Pass a matching WebP still as
-`posterSrc`. The hero initially renders the still and delays any autoplay
-request until page load. Reduced motion and the browser's data-saver signal
-suppress automatic video loading. The still remains visible until playback
-starts and returns on media errors.
+Playback is muted, inline, and looping. Autoplay waits until page load and
+is skipped when the browser reports reduced motion or data saving. The
+pause/play button lets visitors control playback.
