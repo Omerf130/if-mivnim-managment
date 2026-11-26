@@ -1,0 +1,127 @@
+@use "../../styles/tokens" as tokens;
+
+.section {
+  background-color: tokens.$color-background;
+  padding-block: clamp(3.5rem, 8vw, 7.5rem);
+  padding-inline: tokens.$space-lg;
+}
+
+.layout {
+  display: grid;
+  align-items: center;
+  gap: tokens.$space-xl;
+  max-inline-size: tokens.$container-wide;
+  margin-inline: auto;
+}
+
+.figure {
+  position: relative;
+  isolation: isolate;
+  padding-inline-end: tokens.$space-md;
+  padding-block-end: tokens.$space-md;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset-block: tokens.$space-md 0;
+    inset-inline: tokens.$space-md 0;
+    background-color: tokens.$color-primary;
+    clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+    content: "";
+  }
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background-color: tokens.$color-navy;
+  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.image {
+  object-fit: cover;
+  object-position: 34% center;
+}
+
+.content {
+  min-inline-size: 0;
+  max-inline-size: 34rem;
+  text-align: start;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: tokens.$space-sm;
+  color: tokens.$color-primary;
+  font-weight: tokens.$font-weight-bold;
+
+  &::before {
+    inline-size: tokens.$space-lg;
+    block-size: 2px;
+    background-color: currentColor;
+    content: "";
+  }
+}
+
+.title {
+  margin-block-start: tokens.$space-md;
+  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+
+  span {
+    display: block;
+    color: tokens.$color-primary;
+  }
+}
+
+.description {
+  display: grid;
+  gap: tokens.$space-md;
+  margin-block-start: tokens.$space-lg;
+  max-inline-size: 42ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.7;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  margin-block-start: tokens.$space-lg;
+  padding-inline-end: tokens.$space-md;
+  color: tokens.$color-primary;
+  font-weight: tokens.$font-weight-bold;
+  text-decoration: none;
+
+  span {
+    border-block-end: 1px solid currentColor;
+    padding-block-end: tokens.$space-xs;
+  }
+
+  &:hover {
+    color: tokens.$color-navy;
+  }
+}
+
+@media (min-width: tokens.$breakpoint-md) {
+  .layout {
+    grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+  }
+
+  .figure {
+    padding-inline-end: tokens.$space-lg;
+    padding-block-end: tokens.$space-lg;
+
+    &::before {
+      inset-block-start: tokens.$space-lg;
+      inset-inline-start: tokens.$space-lg;
+    }
+  }
+
+  .imageFrame {
+    aspect-ratio: 6 / 5;
+  }
+}

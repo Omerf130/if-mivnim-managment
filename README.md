@@ -35,10 +35,14 @@ The root layout sets Hebrew and RTL for the entire document. Heebo is bundled th
 
 ## Header navigation
 
-The homepage link targets `/#home`. The `/#about`, `/#services`,
-`/#projects`, and `/#contact` links point to temporary anchors on the
-homepage. The corresponding sections have yet to be implemented. Both
-contact links use `/#contact`.
+The homepage link targets `/#home`, and `/#about` opens the homepage About
+section. `/#services`, `/#projects`, and `/#contact` still point to
+temporary homepage anchors.
+
+The About section uses provisional marketing copy and the existing generated
+`residential-exterior.webp` illustration of a fictional building. The
+“הכירו אותנו” CTA temporarily targets `#about-details` on the homepage
+until a dedicated About page exists.
 
 ## Homepage hero media
 

@@ -1,3 +1,4 @@
+import AboutSection from "@/sections/home/AboutSection";
 import Hero from "@/sections/home/Hero";
 
 export default function HomePage() {
@@ -7,7 +8,7 @@ export default function HomePage() {
         posterSrc="/media/hero-building-poster.webp"
         videoSrc="/media/hero-building.mp4"
       />
-      <div id="about" tabIndex={-1} />
+      <AboutSection />
       <div id="services" tabIndex={-1} />
       <div id="projects" tabIndex={-1} />
       <div id="contact" tabIndex={-1} />
