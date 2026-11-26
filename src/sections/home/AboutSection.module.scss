@@ -1,78 +1,100 @@
 @use "../../styles/tokens" as tokens;
 
-$guide: rgba(tokens.$color-primary, 0.12);
+$paper: #f9f7f3;
+$line: rgba(tokens.$color-primary, 0.21);
 
 .section {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(145deg, tokens.$color-white 12%, tokens.$color-background 82%);
-  padding-block: clamp(3.5rem, 8vw, 7.5rem);
-  padding-inline: tokens.$space-lg;
+  overflow: clip;
+  color: tokens.$color-navy;
+  background: radial-gradient(ellipse at 98% 0%, #f4e9dc 0%, transparent 48%),
+    linear-gradient(115deg, #e7f3ff 4%, #fcfcfd 47%, $paper);
+}
 
-  &::before {
+.layout {
+  --photo-height: clamp(12.5rem, 65vw, 22rem);
+  position: relative;
+  isolation: isolate;
+}
+
+.figure {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 auto;
+  block-size: var(--photo-height);
+  clip-path: polygon(0 0, 100% 0, 100% 76%, 0 100%);
+
+  &::after {
     position: absolute;
-    z-index: -1;
     inset: 0;
-    background-image:
-      linear-gradient(to right, $guide 1px, transparent 1px),
-      linear-gradient(to bottom, $guide 1px, transparent 1px);
-    background-size: 2.75rem 2.75rem;
-    mask-image: radial-gradient(ellipse at 83% 27%, #000 0%, transparent 65%);
+    background: radial-gradient(ellipse at 100% 100%, $paper 1%, transparent 47%);
     pointer-events: none;
     content: "";
   }
 }
 
-.layout {
-  display: grid;
-  align-items: center;
-  gap: clamp(2.25rem, 6vw, 6.5rem);
-  max-inline-size: tokens.$container-wide;
-  margin-inline: auto;
+.image {
+  object-fit: cover;
+  object-position: 34% 53%;
 }
 
-.figure {
-  position: relative;
-  isolation: isolate;
-  padding-inline-end: 0.75rem;
-  padding-block-end: 0.75rem;
+.seam {
+  display: none;
+}
+
+.plan,
+.arcs,
+.corner {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.plan {
+  right: -5rem;
+  bottom: 0;
+  inline-size: clamp(16rem, 31vw, 30rem);
+  stroke: rgba(tokens.$color-primary, 0.18);
+  stroke-width: 1;
+  mask-image: linear-gradient(145deg, transparent 14%, #000 68%, transparent 99%);
+}
+
+.arcs {
+  inset: 67% -22% auto auto;
+  inline-size: min(92vw, 54rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(tokens.$color-light-blue, 0.46);
+  border-radius: 50%;
 
   &::before {
     position: absolute;
-    z-index: -1;
-    inset-block: 0.75rem 0;
-    inset-inline: 0.75rem 0;
-    border: 1px solid rgba(tokens.$color-primary, 0.42);
+    inset: 1.75rem;
+    border: 1px solid rgba(tokens.$color-light-blue, 0.25);
+    border-radius: inherit;
     content: "";
   }
 }
 
-.imageFrame {
-  position: relative;
-  aspect-ratio: 5 / 4;
-  background-color: tokens.$color-navy;
-  clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%);
-}
+.corner {
+  right: 0;
+  bottom: 0;
+  inline-size: clamp(4rem, 24vw, 21rem);
+  block-size: clamp(2rem, 10vw, 8.25rem);
+  background: linear-gradient(153deg, tokens.$color-light-blue 14%, tokens.$color-primary 49%, tokens.$color-navy 80%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
 
-.image {
-  object-fit: cover;
-  object-position: 34% center;
-}
-
-.imageCorner {
-  position: absolute;
-  inset-block-start: -0.625rem;
-  inset-inline-start: -0.5rem;
-  inline-size: 1.375rem;
-  block-size: 1.375rem;
-  border-block-start: 1px solid tokens.$color-primary;
-  border-inline-start: 1px solid tokens.$color-primary;
-  pointer-events: none;
+  &::before {
+    position: absolute;
+    inset: 2px 0 0;
+    background: linear-gradient(145deg, transparent 34%, rgba(tokens.$color-light-blue, 0.6) 53%, transparent 54%);
+    content: "";
+  }
 }
 
 .content {
   min-inline-size: 0;
-  max-inline-size: 34rem;
+  padding: calc(var(--photo-height) - 0.75rem) tokens.$space-lg clamp(2.25rem, 5vw, 4rem);
   text-align: start;
 }
 
@@ -83,19 +105,20 @@ $guide: rgba(tokens.$color-primary, 0.12);
   color: tokens.$color-primary;
   font-weight: tokens.$font-weight-bold;
 
-  &::before {
-    inline-size: 2rem;
+  &::before,
+  &::after {
+    inline-size: clamp(1.25rem, 3.5vw, 3.5rem);
     block-size: 1px;
-    background-color: currentColor;
+    background: tokens.$color-light-blue;
     content: "";
   }
 }
 
 .title {
-  margin-block-start: tokens.$space-md;
-  font-size: clamp(2.125rem, 5.4vw, 4.625rem);
-  font-weight: 800;
-  line-height: 1.02;
+  margin-block-start: tokens.$space-sm;
+  font-size: clamp(2.125rem, 4.35vw, 4.25rem);
+  font-weight: 850;
+  line-height: 1.05;
 
   span {
     display: block;
@@ -105,124 +128,141 @@ $guide: rgba(tokens.$color-primary, 0.12);
 
 .description {
   display: grid;
-  gap: tokens.$space-md;
-  margin-block-start: tokens.$space-lg;
-  max-inline-size: 44ch;
-  font-size: clamp(1rem, 1.27vw, 1.125rem);
-  line-height: 1.7;
+  gap: tokens.$space-sm;
+  max-inline-size: 51ch;
+  margin-block-start: tokens.$space-md;
+  color: #2c435d;
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.53;
 }
 
 .values {
-  display: flex;
-  flex-wrap: wrap;
-  gap: tokens.$space-sm clamp(0.75rem, 2vw, 1.5rem);
-  margin-block: tokens.$space-lg 0;
-  padding: tokens.$space-md 0;
-  border-block: 1px solid $guide;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: tokens.$space-lg 0 0;
+  padding: 0;
   list-style: none;
-  font-weight: tokens.$font-weight-bold;
+  text-align: center;
 
   li {
-    display: flex;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+    align-content: start;
     gap: tokens.$space-xs;
+    padding-inline: tokens.$space-xs;
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    font-weight: tokens.$font-weight-bold;
+  }
 
-    &::before {
-      inline-size: 0.25rem;
-      block-size: 0.25rem;
-      background: tokens.$color-primary;
-      content: "";
-    }
+  li + li {
+    border-inline-start: 1px solid $line;
+  }
+
+  svg {
+    inline-size: clamp(1.75rem, 3.3vw, 2.5rem);
+    stroke: tokens.$color-primary;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+}
+
+.action {
+  display: grid;
+  justify-items: center;
+  gap: tokens.$space-md;
+  margin-block-start: tokens.$space-lg;
+
+  &::before {
+    inline-size: 81%;
+    block-size: 1px;
+    background: linear-gradient(90deg, transparent, tokens.$color-light-blue, transparent);
+    content: "";
   }
 }
 
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: tokens.$space-lg;
-  min-block-size: 3rem;
-  margin-block-start: tokens.$space-lg;
-  padding-inline: tokens.$space-md;
-  background-color: tokens.$color-navy;
-  border-radius: tokens.$radius-sm;
+  justify-content: center;
+  gap: tokens.$space-sm;
+  min-inline-size: min(100%, 12.75rem);
+  min-block-size: 2.875rem;
+  padding: tokens.$space-sm tokens.$space-lg;
+  border-radius: 0.875rem;
   color: tokens.$color-white;
+  background: tokens.$color-primary;
   font-weight: tokens.$font-weight-bold;
   text-decoration: none;
 
   &:hover {
-    background-color: tokens.$color-primary;
+    background: tokens.$color-navy;
   }
 }
 
 .ctaArrow {
-  position: relative;
-  inline-size: 1rem;
-  block-size: 1px;
-  background: tokens.$color-light-blue;
-
-  &::after {
-    position: absolute;
-    inset: 0 auto auto 0;
-    inline-size: 0.4375rem;
-    block-size: 0.4375rem;
-    transform: translateY(-45%) rotate(45deg);
-    border-block-end: 1px solid tokens.$color-light-blue;
-    border-inline-end: 1px solid tokens.$color-light-blue;
-    content: "";
-  }
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
+  transform: rotate(45deg);
+  border-block-end: 1px solid currentColor;
+  border-inline-end: 1px solid currentColor;
 }
 
 @media (min-width: tokens.$breakpoint-md) {
   .layout {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    min-block-size: clamp(34.375rem, 42vw, 40.625rem);
+  }
+
+  .figure,
+  .seam {
+    inset: 0 auto 0 0;
+    inline-size: 62%;
+    block-size: 100%;
   }
 
   .figure {
-    margin-block-start: tokens.$space-lg;
-    padding-inline-end: tokens.$space-lg;
-    padding-block-end: tokens.$space-lg;
+    clip-path: polygon(0 0, 88% 0, 59% 100%, 0 100%);
 
-    &::before {
-      inset-block-start: tokens.$space-lg;
-      inset-inline-start: tokens.$space-lg;
+    &::after {
+      background: radial-gradient(ellipse 44% 48% at 65% 99%, #fcfcfd 13%, rgba(#fcfcfd, 0.8) 38%, transparent 85%);
     }
   }
 
-  .imageFrame {
-    aspect-ratio: 6 / 5;
+  .seam {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    stroke: tokens.$color-light-blue;
+    stroke-width: 1.7;
+    mask-image: linear-gradient(#000 0 55%, transparent 94%);
+    pointer-events: none;
+  }
+
+  .plan {
+    bottom: 1.5rem;
+    right: -3rem;
+  }
+
+  .arcs {
+    inset: 0.5rem -9% auto auto;
+    inline-size: min(71vw, 67rem);
+  }
+
+  .content {
+    inline-size: min(55%, 57rem);
+    padding: clamp(2.25rem, 3.6vw, 3.5rem) clamp(1.5rem, 6.5vw, 8rem) clamp(2.25rem, 3.6vw, 3.5rem) clamp(1.5rem, 3.7vw, 5.25rem);
+  }
+
+  .eyebrow {
+    justify-content: center;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .cta {
     transition: background-color tokens.$transition-fast;
-
-    &:is(:hover, :focus-visible) .ctaArrow {
-      transform: translateX(-0.1875rem);
-    }
-  }
-
-  .ctaArrow {
-    transition: transform tokens.$transition-fast;
-  }
-
-  @supports (animation-timeline: view()) {
-    .figure {
-      animation: appear linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 70%;
-    }
-  }
-}
-
-@keyframes appear {
-  from {
-    opacity: 0.72;
-    transform: translateY(0.5rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

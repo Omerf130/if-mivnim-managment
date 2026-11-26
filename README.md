@@ -39,8 +39,8 @@ The homepage link targets `/#home`, and `/#about` opens the homepage About
 section. `/#services` opens the homepage Services section. `/#projects` opens the homepage Projects section.
 `/#contact` opens the homepage Contact section.
 
-The About section uses provisional marketing copy and the existing generated
-`residential-exterior.webp` illustration of a fictional building. The
+The About section uses provisional marketing copy and the original AI-generated
+`public/media/about/sunlit-residence.webp` illustration of a fictional building. The
 “הכירו אותנו” CTA temporarily targets `#about-details` on the homepage
 until a dedicated About page exists.
 
