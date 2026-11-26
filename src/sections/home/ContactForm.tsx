@@ -47,7 +47,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.form} aria-labelledby="contact-form-title" noValidate onSubmit={validate}>
+    <form className={styles.form} data-reveal="form" aria-labelledby="contact-form-title" noValidate onSubmit={validate}>
       <h3 id="contact-form-title">השאירו פרטים ונחזור אליכם</h3>
       <fieldset disabled={!ready} className={styles.fields}>
         {fields.map(({ id, type, label, limit }) => (

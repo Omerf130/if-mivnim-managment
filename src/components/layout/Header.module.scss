@@ -63,12 +63,12 @@ $divider: rgba(tokens.$color-navy, 0.12);
     padding-inline: tokens.$space-md;
     border-radius: tokens.$radius-sm;
 
-    &:hover,
-    &[aria-current="page"] {
+    &:is(:hover, :focus-visible),
+    &[aria-current="location"] {
       color: tokens.$color-primary;
     }
 
-    &[aria-current="page"] {
+    &:is(:hover, [aria-current="location"]) {
       background-color: tokens.$color-background;
     }
   }
@@ -82,8 +82,15 @@ $divider: rgba(tokens.$color-navy, 0.12);
   border-radius: tokens.$radius-sm;
   font-weight: tokens.$font-weight-bold;
 
-  &:hover {
+  transition: background-color tokens.$transition-fast, box-shadow tokens.$transition-fast, transform tokens.$transition-fast;
+
+  &:is(:hover, :focus-visible) {
     background-color: tokens.$color-navy;
+    box-shadow: tokens.$shadow-sm;
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 
@@ -138,14 +145,14 @@ $divider: rgba(tokens.$color-navy, 0.12);
   box-shadow: tokens.$shadow-sm;
   visibility: hidden;
   opacity: 0;
-  transform: translateY(-0.375rem);
-  transition: opacity tokens.$transition-fast, transform tokens.$transition-fast,
-    visibility tokens.$transition-fast;
+  transform: translateY(-0.5rem);
+  transition: opacity 180ms ease-in, transform 180ms ease-in, visibility 0s linear 180ms;
 
   &[data-open="true"] {
     visibility: visible;
     opacity: 1;
     transform: none;
+    transition: opacity 220ms ease-out, transform 220ms ease-out, visibility 0s;
   }
 }
 
@@ -184,17 +191,25 @@ $divider: rgba(tokens.$color-navy, 0.12);
       padding-inline: tokens.$space-sm;
       white-space: nowrap;
 
-      &[aria-current="page"] {
+      &:is(:hover, [aria-current="location"]) {
         background-color: transparent;
+      }
 
-        &::after {
-          position: absolute;
-          inset-inline: tokens.$space-sm;
-          inset-block-end: tokens.$space-xs;
-          block-size: 2px;
-          background-color: tokens.$color-primary;
-          content: "";
-        }
+      &::after {
+        position: absolute;
+        inset-inline: tokens.$space-sm;
+        inset-block-end: tokens.$space-xs;
+        block-size: 2px;
+        background-color: tokens.$color-primary;
+        transform: scaleX(0.55);
+        opacity: 0;
+        transition: transform tokens.$transition-fast, opacity tokens.$transition-fast;
+        content: "";
+      }
+
+      &:is(:hover, :focus-visible, [aria-current="location"])::after {
+        transform: scaleX(1);
+        opacity: 1;
       }
     }
   }
@@ -204,8 +219,14 @@ $divider: rgba(tokens.$color-navy, 0.12);
   .brand,
   .contact,
   .links a,
+  .links a::after,
   .menuIcon span,
-  .panel {
+  .panel,
+  .panel[data-open="true"] {
     transition: none;
+  }
+
+  .contact:active {
+    transform: none;
   }
 }

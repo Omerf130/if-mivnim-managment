@@ -17,7 +17,7 @@ export default function ContactSection() {
       </svg>
 
       <div className={styles.layout}>
-        <header className={styles.intro}>
+        <header className={styles.intro} data-reveal="">
           <p className={styles.eyebrow}>יצירת קשר</p>
           <h2 id="contact-title" className={styles.title}>
             בואו נדבר על{" "}

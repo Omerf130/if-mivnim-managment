@@ -53,3 +53,52 @@ a {
   outline: 2px solid tokens.$color-primary;
   outline-offset: 3px;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal][data-entered="true"] {
+    animation: section-entrance var(--entrance-duration, 460ms) ease-out var(--entrance-delay, 0ms) backwards;
+  }
+
+  [data-reveal="photo"] {
+    --entrance-x: -0.4rem;
+    --entrance-y: 0;
+    --entrance-duration: 540ms;
+  }
+
+  [data-reveal="gallery"] {
+    --entrance-duration: 540ms;
+  }
+
+  [data-reveal="fade"] {
+    --entrance-y: 0;
+    --entrance-duration: 520ms;
+  }
+
+  [data-reveal="form"] {
+    --entrance-delay: 70ms;
+  }
+
+  li:nth-child(2) > [data-reveal="panel"] {
+    --entrance-delay: 45ms;
+  }
+
+  li:nth-child(3) > [data-reveal="panel"] {
+    --entrance-delay: 90ms;
+  }
+
+  li:nth-child(4) > [data-reveal="panel"] {
+    --entrance-delay: 135ms;
+  }
+}
+
+@keyframes section-entrance {
+  from {
+    opacity: 0.82;
+    translate: var(--entrance-x, 0) var(--entrance-y, 0.375rem);
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}

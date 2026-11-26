@@ -15,6 +15,7 @@ export default function AboutSection() {
             fill
             sizes="(min-width: 48rem) 62vw, 100vw"
             className={styles.image}
+            data-reveal="photo"
           />
         </figure>
         <svg className={styles.seam} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -26,7 +27,7 @@ export default function AboutSection() {
         <span className={styles.arcs} aria-hidden="true" />
         <span className={styles.corner} aria-hidden="true" />
 
-        <div className={styles.content}>
+        <div className={styles.content} data-reveal="">
           <p className={styles.eyebrow}>אודותינו</p>
           <h2 id="about-title" className={styles.title}>
             הבניין שלכם.{" "}
