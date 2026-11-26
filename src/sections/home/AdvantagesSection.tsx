@@ -1,0 +1,93 @@
+import Image from "next/image";
+
+import styles from "./AdvantagesSection.module.scss";
+
+const benefits = [
+  {
+    title: "ניהול מקצועי",
+    description: "ניהול מסודר של צורכי המבנה, תוך הקפדה על איכות ותשומת לב לפרטים.",
+    icon: "M5 21 19 21M9 17l3-10 3 10M7 20l3-9m7 9-3-9M10 15h4 M12 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z",
+    connector: "M920 115H862L786 148L704 177",
+    point: [704, 177],
+  },
+  {
+    title: "שקיפות מלאה",
+    description: "תקשורת פתוחה וברורה מול הדיירים ונציגי ועד הבית.",
+    icon: "M2.5 12s3.5-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.5 5.5-9.5 5.5S2.5 12 2.5 12Z M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+    connector: "M280 115H338L406 145L501 169",
+    point: [501, 169],
+  },
+  {
+    title: "שירות אישי",
+    description: "מענה אנושי והתאמת השירות לצרכים הייחודיים של כל מבנה.",
+    icon: "M5 14v-2a7 7 0 0 1 14 0v2M5 13H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3v-5H5Zm14 0h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3v-5h2Zm0 5c0 2-1.5 3-4 3h-3",
+    connector: "M920 345H857L791 321L723 299",
+    point: [723, 299],
+  },
+  {
+    title: "שקט נפשי",
+    description: "מעטפת שירותים שנועדה להקל על ההתנהלות השוטפת של הבניין.",
+    icon: "M12 2.5 20 6v5.2c0 4.8-3 8-8 10.3-5-2.3-8-5.5-8-10.3V6l8-3.5Zm-3 9.5 2 2 4-4",
+    connector: "M280 345H348L423 326L500 308",
+    point: [500, 308],
+  },
+];
+
+export default function AdvantagesSection() {
+  return (
+    <section id="advantages" aria-labelledby="advantages-title" className={styles.section}>
+      <header className={styles.intro}>
+        <p className={styles.eyebrow}>היתרונות שלנו</p>
+        <h2 id="advantages-title" className={styles.title}>למה לבחור <span>בנו</span></h2>
+        <p className={styles.lead}>
+          ניהול מקצועי, יחס אישי ותשומת לב לכל פרט – כדי שתוכלו ליהנות משקט נפשי.
+        </p>
+      </header>
+
+      <div className={styles.scene}>
+        <div className={styles.model}>
+          <Image
+            src="/media/advantages/residential-model.webp"
+            alt="הדמיה אדריכלית של בניין מגורים מואר על גבי בסיס תצוגה עגול"
+            fill
+            sizes="(min-width: 80rem) 45rem, (min-width: 64rem) 58vw, (min-width: 48rem) 36rem, 100vw"
+          />
+        </div>
+
+        <svg className={styles.drawing} viewBox="0 0 1200 460" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          <g className={styles.rings}>
+            <path d="M303 311a297 289 0 0 1 594 0M327 311a273 264 0 0 1 546 0" />
+            <path d="M359 281a249 221 0 0 1 482 0" strokeDasharray="4 8" />
+          </g>
+          <g className={styles.blueprint}>
+            <path d="M193 395 602 329l399 66-400 56-408-56Zm73 13 336-56 330 56M332 420l270-44 261 44M394 429l208-34 194 34M433 357l271 80m64-79-272 79M157 398h53m783 0h50M598 441v16M590 450h16" />
+          </g>
+        </svg>
+
+        <svg className={styles.connectors} viewBox="0 0 1200 460" preserveAspectRatio="none" fill="none" aria-hidden="true">
+          {benefits.map(({ title, connector, point: [x, y] }, index) => (
+            <g key={title} className={styles.connector} data-benefit={index + 1}>
+              <path d={connector} />
+              <circle className={styles.halo} cx={x} cy={y} r="9" />
+              <circle className={styles.point} cx={x} cy={y} r="4.5" />
+            </g>
+          ))}
+        </svg>
+
+        <ul className={styles.benefits} role="list">
+          {benefits.map(({ title, description, icon }, index) => (
+            <li key={title} className={styles.benefit} data-benefit={index + 1} tabIndex={0}>
+              <span className={styles.icon} aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d={icon} /></svg>
+              </span>
+              <div className={styles.copy}>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}

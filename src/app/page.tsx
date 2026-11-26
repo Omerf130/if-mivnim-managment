@@ -1,4 +1,5 @@
 import AboutSection from "@/sections/home/AboutSection";
+import AdvantagesSection from "@/sections/home/AdvantagesSection";
 import Hero from "@/sections/home/Hero";
 import ProjectsSection from "@/sections/home/ProjectsSection";
 import ServicesSection from "@/sections/home/ServicesSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <AdvantagesSection />
       <div id="contact" tabIndex={-1} />
     </main>
   );

@@ -1,0 +1,297 @@
+@use "../../styles/tokens" as tokens;
+
+$studio: #d9e2ef;
+$metal: #9d7349;
+
+.section {
+  isolation: isolate;
+  overflow: clip;
+  padding: clamp(2.5rem, 4vw, 3.75rem) tokens.$space-lg clamp(2rem, 3vw, 3rem);
+  color: tokens.$color-navy;
+  background: radial-gradient(ellipse at 50% 52%, #f4f7fb, transparent 63%),
+    linear-gradient(145deg, #e5edf7, $studio 60%, #c7d4e5);
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  max-inline-size: 39rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: tokens.$space-sm;
+  color: tokens.$color-primary;
+  font-weight: tokens.$font-weight-bold;
+
+  &::before,
+  &::after {
+    inline-size: 1.75rem;
+    block-size: 1px;
+    background: currentColor;
+    opacity: 0.65;
+    content: "";
+  }
+}
+
+.title {
+  margin-block-start: tokens.$space-xs;
+  font-size: clamp(2.25rem, 4.45vw, 4.125rem);
+  line-height: 1.04;
+  font-weight: 850;
+
+  span {
+    color: tokens.$color-primary;
+  }
+}
+
+.lead {
+  margin-block-start: tokens.$space-sm;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  text-wrap: balance;
+}
+
+.scene {
+  position: relative;
+  max-inline-size: tokens.$container-wide;
+  margin: tokens.$space-md auto 0;
+}
+
+.model {
+  position: relative;
+  isolation: isolate;
+  inline-size: min(100%, 36rem);
+  aspect-ratio: 1.43;
+  margin-inline: auto;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent),
+    linear-gradient(180deg, transparent, #000 6%, #000 87%, transparent);
+  mask-composite: intersect;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.drawing,
+.connectors {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+
+.drawing {
+  block-size: min(65vw, 24rem);
+}
+
+.rings {
+  stroke: rgba(tokens.$color-white, 0.74);
+  stroke-width: 1.2;
+}
+
+.blueprint {
+  stroke: rgba(tokens.$color-primary, 0.18);
+  stroke-width: 0.9;
+}
+
+.connectors {
+  display: none;
+}
+
+.benefits {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: tokens.$space-md;
+  max-inline-size: 42rem;
+  margin: tokens.$space-sm auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefit {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: tokens.$space-sm;
+  min-inline-size: 0;
+  padding-block-start: tokens.$space-sm;
+  border-block-start: 1px solid rgba(tokens.$color-primary, 0.23);
+
+  &:is(:hover, :focus-visible) {
+    h3,
+    .icon {
+      color: tokens.$color-primary;
+    }
+
+    .icon {
+      border-color: tokens.$color-primary;
+    }
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  inline-size: clamp(2.25rem, 4.3vw, 3.5rem);
+  block-size: clamp(2.25rem, 4.3vw, 3.5rem);
+  color: tokens.$color-navy;
+  background: radial-gradient(circle at 36% 26%, #fff, #eee0d0 98%);
+  border: 1px solid tokens.$color-white;
+  border-radius: 50%;
+  box-shadow: 0 3px 12px rgba($metal, 0.25);
+
+  svg {
+    inline-size: 60%;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.copy {
+  h3 {
+    font-size: clamp(1.0625rem, 1.75vw, 1.5rem);
+    line-height: tokens.$line-height-title;
+    font-weight: 800;
+  }
+
+  h3::after {
+    display: block;
+    inline-size: 1.5rem;
+    block-size: 2px;
+    margin-block: tokens.$space-xs tokens.$space-sm;
+    background: tokens.$color-primary;
+    content: "";
+  }
+
+  p {
+    font-size: clamp(0.875rem, 1.26vw, 1rem);
+    line-height: 1.48;
+  }
+}
+
+@media (min-width: tokens.$breakpoint-lg) {
+  .scene {
+    min-block-size: clamp(25rem, 34vw, 30rem);
+    display: grid;
+  }
+
+  .model {
+    position: absolute;
+    inset: 0 auto auto 50%;
+    translate: -50% 0;
+    block-size: 100%;
+    inline-size: auto;
+    max-inline-size: 62%;
+    aspect-ratio: 4 / 3;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .drawing {
+    block-size: 100%;
+  }
+
+  .connectors {
+    display: block;
+  }
+
+  .connector {
+    color: $metal;
+    stroke: currentColor;
+    stroke-width: 1.5;
+
+    .halo {
+      fill: currentColor;
+      stroke: none;
+      opacity: 0.16;
+    }
+
+    .point {
+      fill: #fff0d5;
+      stroke: tokens.$color-white;
+      stroke-width: 1.4;
+    }
+  }
+
+  .benefits {
+    grid-template-columns: minmax(0, 22.5%) minmax(0, 22.5%);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    max-inline-size: none;
+    gap: 0;
+    margin: 0;
+  }
+
+  .benefit {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(0.625rem, 1.17vw, 1rem);
+    border-block-start: 0;
+    padding-block-start: 0;
+
+    &:nth-child(even) {
+      direction: ltr;
+
+      .copy {
+        direction: rtl;
+      }
+    }
+  }
+
+  @for $index from 1 through 4 {
+    .scene:has(.benefit[data-benefit="#{$index}"]:is(:hover, :focus-visible)) .connector[data-benefit="#{$index}"] {
+      color: tokens.$color-primary;
+
+      .halo {
+        opacity: 0.33;
+      }
+
+      .point {
+        fill: tokens.$color-light-blue;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .icon,
+  .copy h3,
+  .connector {
+    transition: color tokens.$transition-standard, border-color tokens.$transition-standard;
+  }
+
+  .halo {
+    transition: opacity tokens.$transition-standard;
+  }
+
+  .point {
+    transition: fill tokens.$transition-standard;
+  }
+
+  @supports (animation-timeline: view()) {
+    .model {
+      animation: introduce-model linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+@keyframes introduce-model {
+  from { opacity: 0.75; transform: translateY(0.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}

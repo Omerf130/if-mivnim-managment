@@ -75,3 +75,9 @@ residential architecture illustrations. The numbered entries and provisional
 copy describe an illustrative gallery and make no claims about company projects.
 “לכל הפרויקטים” links to the on-page `#project-gallery` until a dedicated
 Projects page exists. The gallery does not rotate automatically.
+
+## Homepage advantages
+
+The advantages copy is provisional. The architectural model in
+`public/media/advantages/residential-model.webp` is an original AI-generated
+illustration of a fictional building.
